@@ -1,0 +1,49 @@
+﻿tree "Root"
+    fallback
+        tree "Alarmed"
+        tree "Needs"
+        tree "Wants"
+        tree "Idle"
+
+tree "Alarmed"
+    while IsAlarmed
+    fallback
+        while OwnerHome
+            AlertOwner
+        Bark
+
+tree "Needs"
+    fallback
+        tree "Bathroom"
+        tree "Food"
+        tree "Sleep"
+
+tree "Bathroom"
+    while NeedsBathroom
+        SignalBR
+
+tree "Food"
+    while NeedsFood
+        SignalFood
+
+tree "Sleep"
+    while NeedsSleep
+        SignalSleep
+
+tree "Wants"
+    while OwnerHome
+        fallback
+            tree "Lonely"
+            tree "Bored"
+
+tree "Lonely"
+    while IsLonely
+        SignalLonely
+
+tree "Bored"
+    while IsBored
+        SignalBored
+
+tree "Idle"
+    GoIdle
+    
